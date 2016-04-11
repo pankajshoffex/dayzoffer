@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="section-heading-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="heading-page">{{ object.category.name }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <!-- SIDEBAR -->
+    <!--===============================================================-->
+    <div class="col-md-3">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel-group accordion" id="acco">
+            <div class="panel accordion-group">
+
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#acco" href="#acco-1">
+                  {{ object.category.name }}
+                </a>
+              </div>
+              {% if subcategory %}
+              <div id="acco-1" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                  <ul class="list-unstyled">
+                  {% for cat in subcategory %}
+                    <li>
+                      <a href="{% url 'offers:category-detail' cat.slug %}">{{ cat.name }}<small></small>
+                      </a>
+                    </li>
+                  {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MAIN CONTENT -->
+    <!--===============================================================-->
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="row">
+            <div class="col-sm-12">
+              <!-- SLIDER -->
+              <div class="shop-item-slider">
+                <ul class="bxslider">
+                  <li>
+                    <img src="{{ object.image.url_320x320 }}" alt="theme-img">
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- CONTENT -->
+        <!--===============================================================-->
+        <div class="col-md-7">
+          <div class="shop-item-description">
+            <h3 class="title-lg text-theme-sm">{{ object.name }}</h3>
+            <p class="text-theme-sm"><small>Something Over Here</small>
+            </p>
+            <h3 class="title-lg text-theme title-lg-shop-item">{{ object.offer }}</h3>
+            <ul class="text-theme list-unstyled list-md">
+              <li><i class="fa fa-rocket colored"></i><span><b>Availability Till : </b></span><span>{{ object.validity }}</span></li>
+              <li><i class="fa fa-check colored"></i><span><b>Acailable On : </b></span>
+              {% if object.link  %}<span><a href="{{ object.link }}">{{ object.link }}</a></span>{% else %}<span>Instore</span>{% endif %}</li>
+              <li><i class="fa fa-check colored"></i><span><b>Seller : </b></span><span>{{ object.user.user.get_full_name }}</span></li>
+              <li><i class="fa fa-check colored"></i><span><b>Address : </b></span><span>{{ object.user.address }}</span></li>
+              <li><i class="fa fa-check colored"></i><span><b>Area : </b></span><span>{{ object.user.location_aria }}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-20 mb-30">
+        <div class="col-sm-12">
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="title-md hr-left text-uppercase">Related Offers</h1>
+    </div>
+    <div class="section section-sm section-both section-shop-items">
+      <div class="container">
+        <div id="owl-portfolio-item" class="owl-carousel">
+        {% for offer in offer_list %}
+          <div class="item">
+            <a href="{{ offer.get_absolute_url }}" class=""><img class="img-responsive" src="{{ offer.image.url }}" alt="portfolio" style="height: 200px;">
+            </a>
+            <div class="caption-portfolio">
+              <h3 class="text-theme title-xs">{{ offer.name }}</h3>
+              <p class="text-theme">{{ offer.description }}</p>
+            </div>
+          </div>
+        {% endfor %}
+        </div>    
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

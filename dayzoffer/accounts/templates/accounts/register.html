@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block style %}
+<style type="text/css">
+	.login-block{
+		padding-bottom: 10px;
+	}
+</style>
+{% endblock style %}
+
+{% block content %}
+<hr/>
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+<div class="panel panel-default">
+  <div class="panel-heading">CREATE AN ACCOUNT</div>
+  <div class="panel-body">
+  <form action="" method="post">{% csrf_token %}
+	<div class="input-group login-block">
+	    {{ form.full_name.errors }}
+	    <span class="input-group-addon" id="full_name"><i class="fa fa-user"></i></span>
+	    {{ form.full_name }}
+	</div>
+	<div class="input-group login-block">
+	    {{ form.city.errors }}
+	    <span class="input-group-addon" id="city"><i class="fa fa-university"></i></span>
+	    {{ form.city }}
+	</div>
+	<div class="input-group login-block">
+	    {{ form.location_aria.errors }}
+	   	<span class="input-group-addon" id="location_aria"><i class="fa fa-area-chart"></i></span>
+	    {{ form.location_aria }}
+	</div>
+	<div class="input-group login-block">
+	    {{ form.mobile_no.errors }}
+	    <span class="input-group-addon" id="mobile_no"><i class="fa fa-mobile"></i></span>
+	    {{ form.mobile_no }}
+	</div>
+	<div class="input-group login-block">
+	    {{ form.email.errors }}
+	    <span class="input-group-addon" id="email"><i class="fa fa-envelope"></i></span>
+	    {{ form.email }}
+	</div>
+	<div class="input-group login-block">
+	    {{ form.password1.errors }}
+	   	<span class="input-group-addon" id="password1"><i class="fa fa-unlock-alt"></i></span>
+	    {{ form.password1 }}
+	</div>
+	<div class="input-group login-block">
+	    {{ form.password2.errors }}
+	  	<span class="input-group-addon" id="password2"><i class="fa fa-unlock"></i></span>
+	    {{ form.password2 }}
+	</div>
+	<div class="login-block">
+		<button type="submit" class="btn btn-primary btn-block">Register</button>
+	</div>
+	
+  </form>
+  <div class="mt-40">
+  	<a href="{% url 'accounts:signin' %}"><button class="btn btn-blue btn-block">Already Register</button></a>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+{% endblock content %}

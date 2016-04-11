@@ -1,0 +1,38 @@
+{% load staticfiles %}
+{% load custom_tags %}
+{% get_offer_user request as offer_user %}
+<div class="col-sm-4 grid-sidebar">
+<div class="row-heading">
+    <div class="col-sm-12">
+        <h3 class="title-sm text-uppercase hr-left text-theme">{{ offer_user.firm_name }}</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <img src="{% static 'assets/images/portfolio/1.png' %}" class="img-responsive">
+        <a href="#" class="pull-right">Change Profile Image</a>
+    </div>
+</div>
+<div class="row-heading row-heading-mt-20">
+    <div class="col-sm-12">
+        <h3 class="title-sm text-uppercase hr-left text-theme">Shop Details</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <dl>
+			<dt>Shop Name : </dt>
+			<dd>{{ offer_user.firm_name }}</dd>
+			<dt>Shop Owner Name</dt>
+			<dd>{{ offer_user.user.get_full_name }}</dd>
+			<dt>Shop Contact Number</dt>
+			<dd>{{ offer_user.mobile }}</dd>
+			<dt>Address</dt>
+			<address>
+				{{ offer_user.address }}
+			</address>
+		</dl>
+        <a href="{% url 'vendor:seller_update' offer_user.pk %}"><button class="btn btn-pink">Edit</button></a>
+    </div>
+</div>
+</div>

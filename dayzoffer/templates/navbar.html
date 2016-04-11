@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-c">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav top-nav navbar-right">
+            <li><a href="#">Home</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="#about">Hi! {{ request.user.first_name }} </a></li>
+            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'accounts:signin' %}">Sign In</a></li>
+            <li><a href="{% url 'accounts:register' %}">Register</a></li>
+            {% endif %}
+            <li><a href="{% url 'accounts:seller-register' %}">Seller Register</a></li>
+            <li><a href="{% url 'accounts:vendor_login' %}">Seller Login</a></li>
+          </ul>
+          <ul class="nav navbar-nav top-nav">
+            <li><a href="../navbar/"><i style="color: blue;font-size: 21px;" class="fa fa-facebook-square"></i></a></li>
+            <li><a href="../navbar/">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+ 

@@ -1,0 +1,87 @@
+{% load mptt_tags %}
+{% load custom_tags %}
+{% load staticfiles %}
+<div id="header">
+  <nav id="nav" class="navbar navbar-default navbar-fixed-top">
+    <div class="menu-top menu-top-inverse">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-5 col-xs-12">
+              <form class="form-inline">
+                <div class="form-group col-xs-6">
+                {% set_city as cities %}
+                  <select style="width:100%;" id="citySearch" class="form-control select input-sm">
+                    <option>--Select City--</option>
+                  {% for city in cities %}
+                    <option>{{ city }}</option>
+                  {% endfor %}
+                  </select>
+                </div>
+                <div class="form-group col-xs-6">
+                  <select style="width:100%;" class="form-control input-sm">
+                    <option>--Select Area--</option>
+                    <option>Select</option>
+                    <option>Select</option>
+                  </select>
+                </div>
+              </form>
+          </div>
+          <div class="col-sm-7 col-xs-12">
+            <div class="pull-right">
+            {% if request.user.is_authenticated %}
+              <div class="pull-left">
+                <h5 style="color: white;">Hi {{request.user.username }}!</h5>
+              </div>
+              <div class="pull-left">
+                <a href="{% url 'accounts:logout' %}"><button class="btn-menu-top" id="dLabel" type="button">Logout</button></a>
+              </div>
+            {% else %}
+              <div class="pull-left">
+                <a href="{% url 'accounts:signin' %}"><button class="btn-menu-top" id="dLabel" type="button"><i class="fa fa-user"></i> Log in</button></a>
+              </div>
+              <div class="pull-left">
+                <a href="{% url 'accounts:register' %}"><button class="btn-menu-top hidden-xs" id="dShop" type="button"><i class="fa fa-user"></i> Register</button></a>
+              </div>
+              <div class="pull-left">
+                <a class="btn-menu-top" id="dShop" href="{% url 'accounts:vendor_login' %}"><i class="fa fa-users"></i> Shopkeeper</a>
+              </div>
+            </div>
+            <div class="list-inline social-icons-menu-top pull-right">
+              <a href="#" class="social-hover-v1 a-facebook"></a>
+              <a href="#" class="social-hover-v1 a-google"></a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><img class="img-responsive" width="236px" src="{% static 'assets/images/logo/logo-default-d.png' %}" alt="theme-img"></a>
+      </div>
+{% set_node as nodes %}  
+      <div id="navbar" class="navbar-collapse collapse">
+
+        <ul class="nav navbar-nav navbar-right">
+          {% recursetree nodes %}
+           <li class="dropdown"><a href="{% url 'offers:category-detail' node.slug %}">{{ node.name }}</a>
+              {% if not node.is_leaf_node %}
+              <ul class="dropdown-menu dropdown-menu-left">
+                  {{ children }}
+              </ul>
+              {% endif %}
+           </li>
+
+          {% endrecursetree %}
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+</div>

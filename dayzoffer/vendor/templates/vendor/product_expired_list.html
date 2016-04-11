@@ -1,0 +1,33 @@
+{% extends "vendor/vendor_base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+<div class="row">
+	<table class="table table-responsive">
+		<tr class="bg-primary">
+			<td>Product Name</td><td>Offer Name</td><td>Category</td><td>Image</td><td>Validity</td><td>Status</td><td>Action</td>
+		</tr>
+		{% for product in object_list %}
+		<tr>
+			<td>{{ product.name }}</td>
+			<td>{{ product.offer }}</td>
+			<td>{{ product.category }}</td>
+			<td><img src="{{ product.image.url }}" width="74" height="74"></td>
+			<td>{{ product.validity }}</td>
+			<td><b>Deactive</b>
+			</td>
+			<td>
+			<a href="#">View</a>|
+			<a href="{% url 'vendor:product_update' pk=product.pk %}">Update</a>|
+			<a href="{% url 'vendor:product_delete' pk=product.pk %}">Delete</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+{% endblock content %}
+
+
+
+

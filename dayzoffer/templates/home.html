@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="section-intro-index section-slider">
+  <div class="layer-intro layer-intro-index">
+    <!-- SLIDER -->
+    <div class="wrapper-slider" id="intro-slider-wrapper">
+      <div class="carousel slide carousel-intro" id="carousel-intro" data-ride="carousel" data-interval="7500">
+        <div class="wrapper-preloader">
+          <div id="preloader"></div>
+        </div>
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-intro" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-intro" data-slide-to="1"></li>
+          <li data-target="#carousel-intro" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+        {% if home_slider %}
+        {% for slider in home_slider %}
+
+        {% if home_slider.first == slider %}
+          <!-- first slide -->
+          <div class="item item-theme-first active">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-7">
+                  <h1 class="text-theme title-xl mt-40 animation an-delay-05 an-duration-04 fadeInLeftSlider">{{ slider.caption1 }}</h1>
+                  <p class="text-theme lead animation an-delay-09 an-duration-04 fadeInUpSlider">{{ slider.caption2 }}</p>
+                </div>
+                <div class="col-sm-5 hidden-xs">
+                  <img class="pull-right animation an-delay-19 an-duration-04 fadeInUpSlider" src="{{ slider.image.url }}" alt="theme-img">
+                </div>
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="item item-theme">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h1 class="text-theme title-xl mt-40 animation an-delay-05 an-duration-04 fadeInUpSlider">{{ slider.caption1 }}</h1>
+                  <p class="text-theme lead animation an-delay-07 an-duration-04 fadeInRightSlider">{{ slider.caption2 }}</p>
+                </div>
+                <div class="col-sm-5 col-sm-offset-1 hidden-xs">
+                  <img class="img-responsive img-slide-2 pull-right mt-20 animation an-delay-18 an-duration-04 fadeInUpSlider" src="{{ slider.image.url }}" alt="theme-img">
+                </div>
+              </div>
+            </div>
+          </div> 
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        </div>
+      </div>
+    </div>
+    <!-- SLIDER END-->
+  </div>
+  <!-- Controls -->
+  <a href="#carousel-intro" role="button" data-slide="prev">
+    <i class="fa fa-angle-left fa-2x btn-prev-intro"></i>
+  </a>
+  <a href="#carousel-intro" role="button" data-slide="next">
+    <i class="fa fa-angle-right fa-2x btn-next-intro"></i>
+  </a>
+</div>
+
+<!-- SECTION CALL-TO -->
+<!--===============================================================-->
+<div class="section section-both section-primary section-arrow-bottom section-xs inset-shadow-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h3 class="title-md text-theme">BEST OFFERS ARE WAITING FOR YOU</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Multiple Slides -->
+<!--===============================================================-->
+{% if best_offer %}
+<div class="section section-sm section-both section-shop-items">
+  <div class="container">
+    <div id="owl-portfolio-item" class="owl-carousel">
+    {% for offer in best_offer %}
+      <div class="item">
+        <a href="{{ offer.get_absolute_url }}" class=""><img class="img-responsive" src="{{ offer.image.url }}" alt="portfolio" style="height: 200px;">
+        </a>
+        <div class="caption-portfolio">
+          <h3 class="text-theme title-xs">{{ offer.name }}</h3>
+          <p class="text-theme">{{ offer.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+    </div>    
+  </div>
+</div>
+{% endif %}
+<!-- SECTION -->
+<!--===============================================================-->
+<div class="section section-sm section-both section-shop-items">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="title-md hr-left text-uppercase">Latest Offers</h1>
+      </div>
+    </div>
+    <div class="row mt-20">
+    {% for offer in latest_offers %}
+      <div class="col-sm-3">
+        <div class="shop-box bordered">
+          <a href="{{ offer.get_absolute_url }}" class="img-box text-theme">
+            <img class="img-responsive" src="{{ offer.image.url }}" alt="img-theme" style="height: 200px;">
+          </a>
+          <h3 class="title-sm text-theme text-theme-sm"><a href="{{ offer.get_absolute_url }}">{{ offer.name }}</a></h3>
+          <p class="text-theme-sm"><small>{{ offer.description }}</small>
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

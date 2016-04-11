@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block style %}
+<style type="text/css">
+	.login-block{
+		padding-bottom: 10px;
+	}
+</style>
+{% endblock style %}
+
+{% block content %}
+<hr/>
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+<div class="panel panel-default">
+  <div class="panel-heading">LOGIN HERE</div>
+  <div class="panel-body">
+  <form action="" method="post">{% csrf_token %}
+    <div class="input-group login-block">
+	  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+	  <input type="email" class="form-control" name="username" placeholder="Email id" aria-describedby="basic-addon1" required>
+	</div>
+	<div class="input-group login-block">
+	  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-key"></i></span>
+	  <input type="password" class="form-control" name="password" placeholder="Password" aria-describedby="basic-addon1" required>
+	</div>
+	<div class="login-block">
+		<a href="#">Forgot your password ?</a>
+	</div>
+	<div class="login-block">
+		<button type="submit" class="btn btn-primary btn-block">Sign In</button>
+	</div>
+  </form>
+  <center>OR</center>
+  {% load socialaccount %}
+  <a href='{% provider_login_url "facebook" method="oauth2" %}'><button class="btn btn-blue btn-block"><span><i class="fa fa-facebook"></i></span>Login with Facebook</button></a>
+  <div class="mt-40">
+  	<a href="{% url 'accounts:register' %}"><button class="btn btn-blue btn-block">New User Register Here</button></a>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+{% endblock content %}

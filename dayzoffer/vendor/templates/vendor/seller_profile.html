@@ -1,0 +1,22 @@
+{% extends "vendor_base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container mt-20">
+    <div class="row">
+        {% include "vendor/vendor_sidebar.html" %}
+        <div class="col-sm-8 grid-posts">
+            <!-- POST ITEM 1 -->
+            <div class="row">
+                <div class="col-sm-12">
+                {% block vendor_content %}
+                
+                {% endblock vendor_content %}
+                </div>
+            </div> <!-- row -->
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

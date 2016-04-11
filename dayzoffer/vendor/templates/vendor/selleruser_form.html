@@ -1,0 +1,101 @@
+{% extends "vendor/seller_profile.html" %}
+
+{% block vendor_content %}
+<div class="row-heading mt-40">
+    <div class="col-sm-12">
+        <h3 class="title-sm text-uppercase hr-left text-theme">Seller Update Form</h3>
+    </div>
+</div>
+
+<form class="form-horizontal mt-10" action="" method="post" novalidate enctype="multipart/form-data">{% csrf_token %}
+  <div class="col-sm-6">
+      <div class="form-group ">
+          <div class="col-xs-12">
+                <label><small>Store or Firm Name</small></label>
+                {{ form.firm_name }}
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-6">
+      <div class="form-group ">
+          <div class="col-xs-12">
+                <label><small>Mobile</small></label>
+                {{ form.mobile }}
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-6">
+        <div class="form-group ">
+            <div class="col-xs-12">
+                <label><small>Address</small></label>
+                {{ form.address }}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group ">
+            <div class="col-xs-12">
+                <label><small>Location</small></label>
+                {{ form.location_aria }}
+            </div>
+        </div>
+    </div>
+  <div class="col-sm-4">
+      <div class="form-group ">
+          <div class="col-xs-12">
+          	  <label><small>Country</small></label>
+              {{ form.country }}
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-4">
+      <div class="form-group">
+          <div class="col-xs-12">
+          	  <label><small>State</small></label>
+              {{ form.state }}
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-4">
+      <div class="form-group">
+          <div class="col-xs-12">
+              <label><small>City</small></label>
+              {{ form.city }}
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-4">
+      <div class="form-group">
+          <div class="col-xs-12">
+              <label><small>Pincode</small></label>
+              {{ form.pincode }}
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-4">
+      <div class="form-group">
+          <div class="col-xs-12">
+              <label><small>Lattitude</small></label>
+              {{ form.lattitude }}
+            </div>
+        </div>
+  </div>
+  <div class="col-sm-4">
+      <div class="form-group">
+          <div class="col-xs-12">
+              <label><small>Longitute</small></label>
+              {{ form.longitute }}
+            </div>
+        </div>
+  </div>
+    <div class="form-group">
+        <div class="col-xs-12">
+            <button class="btn btn-pink btn-block text-uppercase" type="submit">
+              Upload
+            </button>
+        </div>
+    </div>
+</form>
+{% endblock vendor_content %}
+
+

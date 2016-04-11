@@ -1,0 +1,41 @@
+{% extends "vendor/vendor_base.html" %}
+
+{% block content %}
+<div class="row">
+	<div class="col-lg-3 col-sm-6 col-xs-12 bg-primary">
+		<div>
+			<h4>All Products</h4>
+			{% if products %}
+			<h2>{{ products }}</h2>
+			{% else %}
+			<h2>0</h2>
+			{% endif %}
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6 col-xs-12 bg-success">
+		<div>
+			<h4>Active Products</h4>
+			{% if active %}
+			<h2>{{ active }}</h2>
+			{% else %}
+			<h2>0</h2>
+			{% endif %}
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6 col-xs-12 bg-danger">
+		<div>
+			<h4>Deactive Products</h4>
+			{% if deactive %}
+			<h2>{{ deactive }}</h2>
+			{% else %}
+			<h2>0</h2>
+			{% endif %}
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6 col-xs-12">
+		
+	</div>
+</div>
+{% endblock content %}
+
+

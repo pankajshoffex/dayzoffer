@@ -1,0 +1,28 @@
+html, body {
+	height: 100%;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+.footer, .push {
+	height: auto;
+	clear:both;
+	background-color: #d8d5d5;
+}
+
+.logo {
+	height: 58px;
+	width: 194px;
+	margin-top:-10px;
+}
+.login-block {
+	padding: 10px;
+}
+.navbar-nav > li:hover {
+	background-color: #d8d5d5;
+	color: white;
+}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="section section-sm section-both section-shop-items">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="title-md hr-left text-uppercase">Latest Offers</h1>
+      </div>
+    </div>
+    <div class="row mt-20">
+    {% for offer in latest_offers %}
+      <div class="col-sm-3">
+        <div class="shop-box bordered">
+          <a href="{{ offer.get_absolute_url }}" class="img-box text-theme">
+            <img class="img-responsive" src="{{ offer.image.url }}" alt="img-theme" style="height: 200px;">
+          </a>
+          <h3 class="title-sm text-theme text-theme-sm"><a href="{{ offer.get_absolute_url }}">{{ offer.name }}</a></h3>
+          <p class="text-theme-sm"><small>{{ offer.description }}</small>
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

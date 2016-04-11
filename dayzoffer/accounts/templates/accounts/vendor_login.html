@@ -1,0 +1,70 @@
+{% extends "vendor_base.html" %}
+
+{% block content %}
+<div class="section section-xs section-bottom">
+      <div class="container">
+        <div class="row mb">
+          <div class="col-md-6 col-md-offset-3">
+            <h3 class="title-md hr-left text-theme mt-20">Log in</h3>
+            <div class="panel panel-primary text-theme">
+              <div class="panel-heading">
+                <h3 class="panel-title">Log In</h3>
+              </div>
+              <div class="panel-body">
+                <form class="form-horizontal" method="post" action="">{% csrf_token %}
+
+                  <div class="form-group ">
+                    <div class="col-xs-12">
+                      <input class="form-control" type="text" name="username" required="" placeholder="Username">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <input class="form-control" type="password" name="password" required="" placeholder="Password">
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <div class="col-xs-12">
+                      <input type="checkbox">
+                      <label for="checkbox-signup"> Remember me </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group text-center">
+                    <div class="col-xs-12">
+                      <button class="btn btn-pink btn-block text-uppercase waves-effect waves-light" type="submit">
+                        Log In
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="form-group m-b-0">
+                    <div class="col-sm-12">
+                      <a href="page-recoverpw.html" class="text-dark"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group m-t-20 m-b-0">
+                    <div class="col-sm-12 text-center">
+                      <h4><b>Sign in with</b></h4>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group m-b-0 text-center">
+                    <div class="col-sm-12">
+                      <a href="{% url 'accounts:seller-register' %}"><button type="button" class="btn btn-blue btn-block text-uppercase m-t-20">New User Register</button></a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+

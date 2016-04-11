@@ -1,0 +1,26 @@
+.menu-top form select{
+	border-radius: 15px;
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 2px;    
+}
+
+.menu-top form select option {
+    color:#ffffff;
+}
+
+.btn-pink {
+    color: white;
+    border-color: #C51468;
+    background-color: #DA1B75;
+}
+.btn-blue {
+    color: white;
+    border-color: #0068A5;
+    background-color: #0068A5;
+}
+.select2-container {
+    padding: 4px;
+}

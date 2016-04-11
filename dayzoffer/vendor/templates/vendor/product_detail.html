@@ -1,0 +1,59 @@
+{% extends "vendor/seller_profile.html" %}
+{% load staticfiles %}
+
+
+{% block vendor_content %}
+	<div class="row-heading mt-40">
+					    <div class="col-sm-12">
+					        <h3 class="title-sm text-uppercase hr-left text-theme">{{ object.name }}</h3>
+					    </div>
+					</div>
+		        <div class="col-sm-5">
+		          <div class="row">
+		            <div class="col-sm-12">
+		              <!-- SLIDER -->
+		              <div class="shop-item-slider">
+		                <ul class="bxslider">
+		                  <li>
+		                    <img src="{{ object.image.url }}" alt="theme-img">
+		                  </li>
+		                </ul>
+		              </div>
+		             
+		              <!-- SLIDER END-->
+		            </div>
+		          </div>
+		        </div>
+		        <!-- CONTENT -->
+		        <!--===============================================================-->
+		        <div class="col-md-7">
+		          <div class="shop-item-description">
+		            <p class="text-theme-sm"><small>Something Over Here</small>
+		            </p>
+		            <!-- <div class="wrapper-shop-review text-theme-sm text-theme">
+		              <div class="stars-feedback colored">
+		                <i class="fa fa-star text-theme-sm"></i>
+		                <i class="fa fa-star"></i>
+		                <i class="fa fa-star"></i>
+		                <i class="fa fa-star"></i>
+		                <i class="fa fa-star"></i>
+		              </div>
+		              <span class="title-comment">8 comments</span>
+		              <a href="#">Read</a>
+		              <a href="#">Comment</a>
+		            </div> -->
+		            <h3 class="title-lg text-theme title-lg-shop-item">{{ object.offer }}</h3>
+		            <ul class="text-theme list-unstyled list-md">
+
+		              <li><i class="fa fa-rocket colored"></i><span><b>Availability Till : </b></span><span>{{ object.validity }}</span></li>
+		              <li><i class="fa fa-check colored"></i><span><b>Acailable On : </b></span>{% if object.link %}<span><a href="{{ object.link }}">{{ object.link }}</a></span>{% else %}<span>Instore</span>{% endif %}</li>
+		              <li><i class="fa fa-check colored"></i><span><b>Seller : </b></span><span>{{ object.user.firm_name }}</span></li>
+		              <li><i class="fa fa-check colored"></i><span><b>Address : </b></span><span>{{ object.user.address }}</span></li>
+		              <li><i class="fa fa-check colored"></i><span><b>Area : </b></span><span>{{ object.user.location_aria }}</span></li>
+		              <li><i class="fa fa-check colored"></i><span><b>Mobile : </b></span><span>{{ object.user.mobile }}</span></li>          
+		            </ul>
+		            <a href="{% url 'vendor:product_update' object.pk %}"><button class="btn btn-pink">Edit</button></a>
+		          </div>
+		        </div>
+	      	
+{% endblock vendor_content %}

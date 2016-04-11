@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container mt-20">
+  <div class="row">
+    <!-- MAIN CONTENT -->
+    <!--===============================================================-->
+    <div class="col-sm-9 col-sm-push-3">
+      <div class="row-heading">
+        <div class="col-sm-12">
+          <h3 class="title-sm hr-left text-uppercase">{{ object.name }}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <!-- SLIDER -->
+          <ul class="bxslider">
+            <li>
+            {% if object.image %}
+              <img src="{{ object.image.url }}" alt="img-theme" />
+            {% else %}
+              <img src="{% static 'assets/images/placeholder/700x250.gif' %}" alt="img-theme" />
+            {% endif %}
+            </li>
+          </ul>
+          <div id="bx-pager-shop" class="bx-pager-shop bx-pager-6">
+          </div>
+          <!-- SLIDER END-->
+        </div>
+      </div>
+      <div class="row mt-20">
+        <div class="col-md-12">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs nav-tabs-shop" role="tablist">
+            <li class="active">
+              <a href="#top-selling-items" role="tab" data-toggle="tab">Top Selling Items</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Tab panes -->
+      <div class="tab-content tab-content-shop">
+        <!-- TAB-CONTENT-1 -->
+        <!--===============================================================-->
+        <div class="tab-pane fade in active" id="top-selling-items">
+          <div class="row mt-20">
+          {% for offer in offer_list %}
+            <div class="col-sm-4">
+              <div class="shop-box bordered">
+                <a href="{{ offer.get_absolute_url }}" class="img-box text-theme">
+                  <img class="img-responsive" src="{{ offer.image.url_200x200 }}" alt="img-theme">
+                </a>
+                <h3 class="title-sm text-theme text-theme-sm"><a href="{{ offer.get_absolute_url }}">{{ offer.offer }}</a></h3>
+                <p class="text-theme-sm"><small>{{ offer.description }}</small>
+                </p>
+              </div>
+            </div>
+          {% endfor %}
+            
+          </div>
+         
+          
+        </div>
+        <!-- TAB-CONTENT-2 -->
+        <!--===============================================================-->
+      </div>
+      <!-- <div class="row">
+        <div class="col-sm-12">
+          <ul class="pagination pagination-lg mt-50">
+            <li class="active">
+              <a href="#">1</a>
+            </li>
+            <li>
+              <a href="#">2</a>
+            </li>
+            <li>
+              <a href="#">3</a>
+            </li>
+            <li>
+              <a href="#">4</a>
+            </li>
+            <li>
+              <a href="#">Next Page »</a>
+            </li>
+          </ul>
+        </div>
+      </div> -->
+    </div>
+    <!-- SIDEBAR -->
+    <!--===============================================================-->
+    <div class="col-sm-3 col-sm-pull-9">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel-group accordion" id="acco">
+            <div class="panel accordion-group">
+            
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#acco" href="#acco-1">
+                  {{ object.name }}
+                </a>
+              </div>
+              {% if subcategory %}
+              <div id="acco-1" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                  <ul class="list-unstyled">
+                  {% for cat in subcategory %}
+                    <li>
+                      <a href="{% url 'offers:category-detail' cat.slug %}">{{ cat.name }}<small></small>
+                      </a>
+                    </li>
+                  {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row-heading">
+        <div class="col-sm-12">
+          <h3 class="title-sm hr-left text-uppercase">Features</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="icon-box bordered">
+            <i class="fa fa-star fa-3x text-theme"></i>
+            <h3 class="title-sm text-theme">This is Optional for Somthing</h3>
+            <p class="text-theme">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a class="btn btn-default btn-xs text-theme" href="#">Read More</a>
+          </div>
+          <div class="icon-box bordered mt-20">
+            <i class="fa fa-star-o fa-3x text-theme"></i>
+            <h3 class="title-sm text-theme">This is Optional for Somthing</h3>
+            <p class="text-theme">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a class="btn btn-default btn-xs text-theme" href="#">Read More</a>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+{% endblock content %}

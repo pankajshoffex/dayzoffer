@@ -1,0 +1,50 @@
+{% extends "vendor/seller_profile.html" %}
+{% load staticfiles %}
+
+
+{% block vendor_content %}
+<div class="tab-pane fade in active" id="offers">
+                            <div class="row-heading mt-40">
+                                <div class="col-sm-12">
+                                    <h3 class="title-sm hr-left text-theme">Recent Offers</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                {% if object_list %}
+                                {% for product in object_list %}
+                                    <div class="col-sm-3">
+                                        <a href="{% url 'vendor:product_detail' pk=product.pk %}"><img src="{{ product.image.url }}" class="img-responsive"></a>
+                                    </div>
+                                {% endfor %}
+                                {% else %}
+                                <center><span >You don't have current offers. </span><a href="{% url 'vendor:product_create' %}">Upload New Offer</a></center>
+
+                                {% endif %}
+                                </div>
+                            </div>
+                            <div class="row-heading mt-20">
+                                <div class="col-sm-12">
+                                    <h3 class="title-sm hr-left text-theme">Previous Offers</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                {% if expired_products %}
+                                {% for product in expired_products %}
+                                    <div class="col-sm-3 mt-10">
+                                        <img src="{{ product.image.url }}" class="img-responsive">
+                                    </div>
+                                {% endfor %}
+                                {% else %}
+                                <center><span >You don't have any previous offers. </span></center>
+
+                                {% endif %}
+                                    
+                                </div>
+                            </div>
+{% endblock vendor_content %}
+
+
+
+
