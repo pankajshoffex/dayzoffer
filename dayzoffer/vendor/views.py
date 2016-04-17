@@ -31,7 +31,7 @@ def seller_profile(request):
 class ProductCreateView(LoginRequiredMixin, CreateView):
 	form_class = ProductForm
 	template_name = "vendor/product_form.html"
-	success_url = "/vendor/list"
+	success_url = "/vendor/"
 
 	def get_seller_user(self):
 		seller_user = SellerUser.objects.get(user=self.request.user)

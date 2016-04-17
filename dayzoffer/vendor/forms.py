@@ -1,7 +1,7 @@
 from django import forms
 from .models import Product
 from functools import partial
-DateInput = partial(forms.DateInput, {'class': 'datepicker', 'placeholder': 'Product validity', 'aria-describedby': 'validity'})
+DateInput = partial(forms.DateInput, {'class': 'input-group-addon ddd', 'placeholder': 'YYYY-MM-DD' })
 
 
 class ProductForm(forms.ModelForm):

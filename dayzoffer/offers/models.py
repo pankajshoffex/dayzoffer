@@ -60,3 +60,4 @@ class NewsLetter(models.Model):
 
 
 
+

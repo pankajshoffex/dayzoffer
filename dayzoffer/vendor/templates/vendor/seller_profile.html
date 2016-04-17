@@ -1,6 +1,32 @@
 {% extends "vendor_base.html" %}
 {% load staticfiles %}
 
+{% block style %}
+<link href="{% static 'css/datepicker.css' %}" rel="stylesheet">
+<style type="text/css">
+#datepicker{width:180px; margin: 0 20px 20px 20px;}
+#datepicker > span:hover{cursor: pointer;}
+
+.ddd{
+    width:130px;
+}
+</style>
+{% endblock style %}
+
+{% block script %}
+<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+ <script>
+  $(function () {
+    $("#datepicker").datepicker({ 
+          autoclose: true, 
+          todayHighlight: true,
+        //   startDate: '-2m',
+        // endDate: 'd'
+    });//.datepicker('update', new Date());
+  });
+</script>
+{% endblock script %}
+
 {% block content %}
 <div class="container mt-20">
     <div class="row">
